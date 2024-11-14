@@ -29,32 +29,16 @@ public class DoubleLinkedList {
     }
     
     public void Encrypt(int value){
-        
-        var current = Head;
-        
-        while(current != null){
-            current.Cifra(value);
-            current = current.Next;           
-        }
-                
-        Show();
+        Crypt(value);
     }
     
     public void Decrypt(int value){
         value *= -1;
         
-        var current = Head;
-        
-        while(current != null){
-            current.Cifra(value);
-            current = current.Next;
-        }
-                        
-        Show();
+        Crypt(value);
     }
     
     public void Show(){
-        
         var current = Head;
         
         while(current != null){
@@ -63,5 +47,16 @@ public class DoubleLinkedList {
         }
                 
         System.out.println();
+    }
+
+    private void Crypt(int value){
+        var current = Head;
+
+        while(current != null){
+            current.Cifra(value);
+            current = current.Next;
+        }
+
+        Show();
     }
 }

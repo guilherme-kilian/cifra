@@ -17,9 +17,9 @@ public class Cifra {
         char[] sentence = scanner.nextLine().toCharArray();
         
         var list = new DoubleLinkedList();
-        
-        for(int i = 0; i < sentence.length; i++){
-            var node = new Node(sentence[i]);
+
+        for (char c : sentence) {
+            var node = new Node(c);
             list.Add(node);
         }
                 

@@ -17,35 +17,28 @@ public class Node {
         this.Value = Value;
     }
     
-    public void Cifra(int vetor){
-        var ascii = ((int)this.Value) + vetor;
+    public void Cifra(int vector){
+        var ascii = ((int)this.Value) + vector;
         
         if(isLowerCaseLetter(this.Value)){
-                       
-            if(ascii < 97){
-                var diff = 122 - (97 - ascii);
-                this.Value = (char)diff;                
-            }
-            else if(ascii > 122){
-                var diff = 97 + (ascii - 122);
-                this.Value = (char)diff;
-            }
-            else{
-                this.Value = (char)ascii;
-            }
+            CheckAscii(ascii, 97, 122);
         }
         else if(isUpperCaseLetter(this.Value)){
-            if(ascii < 65){
-                var diff = 90 - (65 - ascii);
-                this.Value = (char)diff;
-            }
-            else if(ascii > 90){
-                var diff = 65 + (ascii - 90);
-                this.Value = (char)diff;
-            }
-            else{
-                this.Value = (char)ascii;
-            }
+            CheckAscii(ascii, 65, 90);
+        }
+    }
+
+    private void CheckAscii(int ascii, int minAsciiValue, int maxAsciiValue){
+        if(ascii < minAsciiValue){
+            var diff = maxAsciiValue - (minAsciiValue - ascii);
+            this.Value = (char)diff;
+        }
+        else if(ascii > maxAsciiValue){
+            var diff = minAsciiValue + (ascii - maxAsciiValue);
+            this.Value = (char)diff;
+        }
+        else{
+            this.Value = (char)ascii;
         }
     }
     
